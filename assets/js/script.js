@@ -1,24 +1,26 @@
 let start = 0;
 let limit = 20;
-let pokeApi = [];
+
 let pokemons = document.querySelector('.pokemons');
 let modal = document.querySelector('.poke-modal');
 let typeDefault = '';
+let filter = 'about';
 
 
 
 function loadPoke() {
+    document.querySelector('.loader-wrapper').style.display = 'none';
+    document.querySelector('.more').style.display = 'block';
     getPokemons(start, limit).then((poke)=> {
         createPoke(poke.results);
     });
 }
 function createPoke(result) {
-
     for(let i in result) {
         let pokeArea = document.querySelector('.pokemon-model .poke-area').cloneNode(true);
         let res = result[i];
+        // console.log(res)
         getSpecificPoke(res.url).then((response)=> {
-            // console.log(response);
             pokeArea.querySelector('.poke-info span:last-child').innerHTML = `#${response.id}`;
 
             for(let j in response.types) {
@@ -41,10 +43,21 @@ function createPoke(result) {
 
             pokeArea.querySelector('.poke-status a').addEventListener('click', (e)=> {
                 e.preventDefault();
+                // console.log(response);
+                let pokemon = e.target.closest('.poke-area ');
+
                 typeDefault = response.types[0].type.name;
-                modal.querySelector('.modal-name span').innerHTML = res.name;
+                modal.querySelector('.modal-name span:first-child').innerHTML = res.name;
+                modal.querySelector('.modal-name span:last-child').innerHTML = `#${response.id}`;
                 modal.querySelector('.area-modal').classList.add(typeDefault);
                 modal.querySelector('.modal-pic').innerHTML = `<img src="${response.sprites.other.dream_world.front_default}">`;
+
+                modal.querySelector('.performance .exp .progress-bar span').innerHTML = response.base_experience;
+
+                pokemon.querySelectorAll('.types span').forEach((value)=>{
+                    let tp = value.cloneNode(true);
+                    modal.querySelector('.modal-type').appendChild(tp);
+                })
 
                 setTimeout(()=>{
                     modal.style.opacity = 1;
@@ -55,23 +68,43 @@ function createPoke(result) {
         });
         pokeArea.querySelector('.poke-info span:first-child').innerHTML = res.name;
         pokemons.appendChild(pokeArea);
-
-        
-
     }   
+}
+function changeStats(e) {
+    document.querySelector('.opt .selected').classList.remove('selected');
+    e.target.classList.add('selected');
+
+    filter = e.target.getAttribute('data-filter');
+
+    document.querySelectorAll('.performance div').forEach((item)=>{
+       let filterItem = item.getAttribute('data-filter');
+        if(filterItem !== filter) {
+            item.classList.replace('d-flex','d-none');
+        } else {
+            item.classList.replace('d-none','d-flex');
+        }
+    });
 }
 
 loadPoke();
 document.querySelector('.more').addEventListener('click', ()=>{
     start += limit;
-    loadPoke();
+    document.querySelector('.loader-wrapper').style.display = 'block';
+    document.querySelector('.more').style.display = 'none';
+    setTimeout(()=>{
+        loadPoke();
+    },1000)
+
 });
 document.querySelector('.close-modal').addEventListener('click',(e)=>{
     e.preventDefault();
+    modal.querySelector('.modal-type').innerHTML = '';
     setTimeout(()=>{
         modal.style.opacity = 0;
     }, 500);
     modal.style.display = 'none';
-    console.log(typeDefault);
     e.target.closest('.area-modal').classList.remove(typeDefault);
 });
+document.querySelectorAll('.opt span').forEach((item)=>{
+    item.addEventListener('click', changeStats);
+})

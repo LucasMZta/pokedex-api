@@ -14,11 +14,66 @@ h1 {
 a {
     text-decoration: none;
 }
+.d-none {
+    display: none!important;
+}
+.d-flex {
+    display: flex!important;
+}
 .pokemon-model {
     display: none;
 }
 .container {
     display: flex;
+}
+.load {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+}
+.loader-wrapper {
+    width: 100px;
+    height: 100px;
+    margin-top: -3rem;
+}
+.loader {
+    width: 100%;
+    height: 100%;
+    border: 3px solid #162534;
+    border-top-color: #2CD9FF;
+    border-bottom-color: #7EFFB2;
+    border-radius: 50%;
+    animation: rotate 5s linear infinite;
+}
+.loader--inner {
+    border-top-color: #7EFFB2;
+    border-bottom-color: #2CD9FF;
+    animation-duration: 2.5s;
+}
+@keyframes rotate {
+    0% {
+        transform: scale(1) rotate(360deg);
+    }
+    50% {
+        transform: scale(.8) rotate(-360deg);
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+.more {
+    border: none;
+    background-color: #7C528C;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: #FFF;
+    cursor: pointer;
+    transition: .3s;
+}
+.more:hover {
+    background-color: #9e68b3;
 }
 .filters {
     width: 15rem;
@@ -28,7 +83,7 @@ a {
 .pokemons {
     padding: 2rem;
     flex: 1;
-    background-color: #FFF;
+    /* background-color: #FFF; */
     gap: 1rem;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -81,7 +136,7 @@ a {
     padding: .3rem;
     filter: brightness(1.1);
     border-radius: 8px;
-    box-shadow: 1px 3px 3px 1px rgb(0 0 0 / 30%);
+    box-shadow: 0px 4px 2px 1px rgb(0 0 0 / 30%);
 }
 .poke-status a:hover {
     filter: opacity(0.8);
@@ -106,13 +161,14 @@ a {
     width: 100vw;
     height: 100vh;
     z-index: 999;
-    /* opacity: 0; */
-    display: flex;
+    opacity: 0;
+    display: none;
     align-items: center;
     justify-content: center;
     transition: all ease-in-out .5s;
 }
 .poke-modal .area-modal {
+    min-width: 21rem;
     background-color: #FFF;
     position: relative;
     border-radius: 10px;
@@ -135,9 +191,11 @@ a {
 .area-modal .modal-pic {
     display: flex;
     justify-content: center;
+    margin-top: 30px;
+    margin-bottom: -45px;
 }
 .area-modal .modal-pic img {
-    max-height: 15rem;
+    max-height: 12rem;
 }
 .area-modal .modal-poke--status {
     padding: 1rem;
@@ -152,79 +210,105 @@ a {
     font-size: 1.2rem;
     font-weight: 500;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     margin-bottom: 1rem;
+    color: #FFF;
 }
 .area-modal .modal-name span::first-letter {
     text-transform: uppercase;
 }
 .area-modal .modal-type {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     gap: 1rem;
 }
 .area-modal .modal-type span {
-    padding: .5rem .6rem;
+    padding: .5rem 1rem;
     border-radius: 8px;
+    box-shadow: 1px 3px 3px 1px rgb(0 0 0 / 30%);
 }
-.area-modal .modal-detail {
+.modal-options .opt span {
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
     font-weight: 300;
-    display: flex;
-    justify-content: space-around;
-    margin: 1rem 0;
+    border-bottom: 2px solid transparent;
+    padding-bottom: .5rem;
+    margin-bottom: 1rem;
+    transition: border .2s;
 }
-.area-modal .modal-detail span {
-    display: block;
+.modal-options .opt span.selected {
+    border-color: blue;
+    color: #000;
+    font-weight: 400;
 }
-.modal-performance h5 {
+.modal-options h5 {
     text-align: center;
     font-size: 1.3rem;
     font-weight: 300;
     margin: 1rem 0;
 }
-.modal-performance span {
+.modal-options span {
     display: inline-block;
 }
-.modal-performance div {
+.modal-options div {
     display: flex;
     align-items: center;
     margin: 0.3rem 0;
 }
-.modal-performance .performance > span:first-child {
+.modal-options .opt {
+    margin-top: .5rem;
+}
+.modal-options .performance {
+    flex-direction: column;
+    min-height: 13.75rem;
+}
+.modal-options .performance > div {
+    width: 100%;
+}
+.modal-options .performance div:not(.data) > span:first-child {
     width: 3rem;
 }
-.modal-performance div .progress {
+.modal-options div .progress {
     min-width: 14rem;
 }
-.modal-performance .progress {
+.performance .data span:first-child {
+    width: 5rem;
+    font-weight: 400;
+    color: #000;
+}
+.performance .data span {
+    font-weight: 300;
+}
+.modal-options .progress {
     width: 100%;
     height: 1.2rem;
     border: 0.5px solid #CCC;
     border-radius: .6rem;
 }
-.modal-performance .progress-bar {
+.modal-options .progress-bar {
     height: 100%;
     border-radius: inherit;
     justify-content: flex-end;
 }
-.modal-performance .progress-bar span {
+.modal-options .progress-bar span {
     color: #000;
     padding: .3rem;
     font-size: .9rem;
 }
-.modal-performance .hp .progress-bar {
+.modal-options .hp .progress-bar {
     background-color: red;
 }
-.modal-performance .atk .progress-bar {
+.modal-options .atk .progress-bar {
     background-color: darkslateblue;
 }
-.modal-performance .def .progress-bar {
+.modal-options .def .progress-bar {
     background-color: deeppink;
 }
-.modal-performance .spd .progress-bar {
+.modal-options .spd .progress-bar {
     background-color: green;
 }
-.modal-performance .exp .progress-bar {
+.modal-options .exp .progress-bar {
     background-color: blue;
 }
 
