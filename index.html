@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,25 +10,75 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/class.css">
 </head>
+
 <body>
     <div class="pokemon-model">
         <div class="poke-area">
-                <div class="poke-info">
-                    <span>Bulbasaur</span>
-                    <span>#1</span>
+            <div class="poke-info">
+                <span>Bulbasaur</span>
+                <span>#1</span>
+            </div>
+            <div class="poke-data">
+                <div class="poke-status">
+                    <div class="types"> </div>
+                    <a href="#">Saiba Mais</a>
                 </div>
-                <div class="poke-data">
-                    <div class="poke-status">
-                        <!-- <span class="poke-status--type" data-status-type="grass">Grass</span>
-                        <span class="poke-status--type" data-status-type="poison">Poison</span> -->
-                        <a href="#">Saiba Mais</a>
-                    </div>
-                    <div class="poke-pic">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="">
-                    </div>
+                <div class="poke-pic">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+                        alt="">
                 </div>
             </div>
+        </div>
     </div>
+
+    <div class="poke-modal">
+        <div class="area-modal">
+            <div class="modal-poke--area ">
+                <div class="close-modal"> <a href=""> X </a></div>
+                <div class="modal-pic">
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg">
+                </div>
+            </div>
+            <div class="modal-poke--status">  
+                <div class="modal-name"><span> -- </span></div>
+                <div class="modal-type"> 
+                    <span class="poke-status--type" data-status-type="grass">Grass</span>
+                    <span class="poke-status--type" data-status-type="poison">Poison</span></span> </div>
+                <div class="modal-detail"> 
+                    <div class="left">
+                        <span>Height:</span> <span>10.8m</span>
+                    </div> 
+                    <div class="right">
+                        <span>Weight</span> <span>392.0kg</span> 
+                    </div>
+                </div>
+                <div class="modal-performance">
+                    <h5>Performance</h5>
+                    <div class="performance hp">
+                        <span>HP</span> 
+                        <div class="progress"><div class="progress-bar" style="width: 40%;"><span>100</span></div></div>
+                    </div>
+                    <div class="performance atk">
+                        <span>ATK</span> 
+                        <div class="progress"><div class="progress-bar" style="width: 40%;"><span>100</span></div></div>
+                    </div>
+                    <div class="performance def">
+                        <span>DEF</span>
+                        <div class="progress"><div class="progress-bar" style="width: 40%;"><span>100</span></div></div>
+                    </div>
+                    <div class="performance spd">
+                        <span>SPD</span> 
+                        <div class="progress"><div class="progress-bar" style="width: 40%;"><span>100</span></div></div>
+                    </div>
+                    <div class="performance exp">
+                        <span>EXP</span>
+                        <div class="progress"><div class="progress-bar" style="width: 40%;"><span>100</span></div></div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+
 
     <h1>Pokedex</h1>
     <button class="more">Load More</button>
@@ -38,8 +89,9 @@
         <section class="pokemons"> </section>
     </div>
 
-    
-<script src="assets/js/pokeapi.js"></script>
-<script src="assets/js/script.js"></script>
+
+    <script src="assets/js/pokeapi.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>

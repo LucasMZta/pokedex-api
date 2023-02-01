@@ -6,13 +6,14 @@ async function getPokemons(start, limit) {
         return  await response.json();
 
     } catch (error) {
-        console.log(error);
         return error;
     }
 }
 async function getSpecificPoke(url) {
-    let response = await fetch(url);
-    return await response.json();
-    // .then((response) => response.json())
-    // .catch((error) => console.error(error))
+    try {
+        let response = await fetch(url);
+        return await response.json();
+    } catch(error) {
+        return error ;
+    }
 }

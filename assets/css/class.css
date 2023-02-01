@@ -29,60 +29,63 @@
 }
 
 /*Pokemon Background-color */
-/* .poke-area.grass {
+.poke-area.grass, .area-modal.grass {
     background-color: var(--color-bg-pk-grass);
 }
-.poke-area.fire {
+.poke-area.fire, .area-modal.fire {
     background-color: var(--color-bg-pk-fire);
 }
-.poke-area.water {
+.poke-area.water, .area-modal.water {
     background-color: var(--color-bg-pk-water);
 }
-.poke-area.bug {
+.poke-area.bug, .area-modal.bug {
     background-color: var(--color-bg-pk-bug);
 }
-.poke-area.normal {
+.poke-area.normal, .area-modal.normal {
     background-color: var(--color-bg-pk-normal);
 }
-.poke-area.poison {
+.poke-area.poison, .area-modal.poison {
     background-color: var(--color-bg-pk-poison);
 }
-.poke-area.electric {
+.poke-area.electric, .area-modal.electric {
     background-color: var(--color-bg-pk-eletric);
 }
-.poke-area.ground {
+.poke-area.ground, .area-modal.ground {
     background-color: var(--color-bg-pk-ground);
 }
-.poke-area.fairy {
+.poke-area.fairy, .area-modal.fairy {
     background-color: var(--color-bg-pk-fairly);
 }
-.poke-area.fighting {
+.poke-area.fighting, .area-modal.fighting {
     background-color: var(--color-bg-pk-fighting);
 }
-.poke-area.psychic {
+.poke-area.psychic, .area-modal.psychic {
     background-color: var(--color-bg-pk-psychic);
 }
-.poke-area.rock {
+.poke-area.rock, .area-modal.rock {
     background-color: var(--color-bg-pk-rock);
 }
-.poke-area.ghost {
+.poke-area.ghost, .area-modal.ghost {
     background-color: var(--color-bg-pk-ghost);
 }
-.poke-area.ice {
+.poke-area.ice, .area-modal.ice {
     background-color: var(--color-bg-pk-ice);
 }
-.poke-area.ground {
+.poke-area.ground, .area-modal.ground {
     background-color: var(--color-bg-pk-ground);
 }
-.poke-area.dragon {
+.poke-area.dragon, .area-modal.dragon {
     background-color: var(--color-bg-pk-dragon);
 }
-.poke-area.dark {
+.poke-area.dark, .area-modal.dark {
     background-color: var(--color-bg-pk-dark);
 }
-.poke-area.steel {
+.poke-area.steel, .area-modal.steel {
     background-color: var(--color-bg-pk-steel);
-} */
+}
+.poke-area.flying, .area-modal.flying {
+    background-color: var(--color-bg-pk-flying);
+}
 
 /* Pokemon Types Background-color */
 .poke-status--type[data-status-type="grass"] {
@@ -124,4 +127,20 @@
 }
 .poke-status--type[data-status-type="rock"] {
     background-color: var(--color-bg-pk-rock);
+}
+.poke-status--type[data-status-type="ice"] {
+    background-color: var(--color-bg-pk-ice);
+}
+.poke-status--type[data-status-type="ghost"] {
+    background-color: var(--color-bg-pk-ghost);
+}
+.poke-status--type[data-status-type="steel"] {
+    background-color: var(--color-bg-pk-steel);
+}
+.poke-status--type[data-status-type="dragon"] {
+    background-color: var(--color-bg-pk-dragon);
+}
+.poke-status--type[data-status-type="dark"] {
+    background-color: var(--color-bg-pk-dark);
+    color: #FFF;
 }

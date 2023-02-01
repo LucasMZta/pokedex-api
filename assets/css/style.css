@@ -49,6 +49,9 @@ a {
     justify-content: space-between;
     color: #FFF;
 }
+.poke-info span {
+    font-size: 1.1rem;
+}
 .poke-info span:first-child::first-letter{
     text-transform: uppercase;
 }
@@ -57,6 +60,10 @@ a {
 }
 .poke-status {
     flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     padding: .5rem;
 }
 .poke-status span {
@@ -67,7 +74,18 @@ a {
     border-radius: 8px;
     box-shadow: 1px 3px 3px 1px rgb(0 0 0 / 30%);
 }
-
+.poke-status a {
+    margin-top: 1rem;
+    color: inherit;
+    background-color: inherit;
+    padding: .3rem;
+    filter: brightness(1.1);
+    border-radius: 8px;
+    box-shadow: 1px 3px 3px 1px rgb(0 0 0 / 30%);
+}
+.poke-status a:hover {
+    filter: opacity(0.8);
+}
 .poke-data {
     flex: 1;
     display: flex;
@@ -79,6 +97,135 @@ a {
 .poke-pic img {
     width: 100%;
     max-height: 6.25rem;
+}
+
+
+.poke-modal {
+    position: fixed;
+    background-color: rgba(0,0,0,.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    /* opacity: 0; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in-out .5s;
+}
+.poke-modal .area-modal {
+    background-color: #FFF;
+    position: relative;
+    border-radius: 10px;
+}
+.area-modal .close-modal {
+    font-size: 1.5rem;
+    text-align: right;
+}
+.area-modal .close-modal a {
+    color: darkred;
+    transition: .5s;
+}
+.area-modal .close-modal a:hover{
+    color: red;
+}
+.area-modal .modal-poke--area {
+    background: url(../images/bg-poke.png) right bottom no-repeat;
+    padding: 1rem;
+}
+.area-modal .modal-pic {
+    display: flex;
+    justify-content: center;
+}
+.area-modal .modal-pic img {
+    max-height: 15rem;
+}
+.area-modal .modal-poke--status {
+    padding: 1rem;
+    color: #555;
+    background-color: #FFF;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+.area-modal .modal-name {
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+.area-modal .modal-name span::first-letter {
+    text-transform: uppercase;
+}
+.area-modal .modal-type {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.area-modal .modal-type span {
+    padding: .5rem .6rem;
+    border-radius: 8px;
+}
+.area-modal .modal-detail {
+    font-weight: 300;
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+.area-modal .modal-detail span {
+    display: block;
+}
+.modal-performance h5 {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 300;
+    margin: 1rem 0;
+}
+.modal-performance span {
+    display: inline-block;
+}
+.modal-performance div {
+    display: flex;
+    align-items: center;
+    margin: 0.3rem 0;
+}
+.modal-performance .performance > span:first-child {
+    width: 3rem;
+}
+.modal-performance div .progress {
+    min-width: 14rem;
+}
+.modal-performance .progress {
+    width: 100%;
+    height: 1.2rem;
+    border: 0.5px solid #CCC;
+    border-radius: .6rem;
+}
+.modal-performance .progress-bar {
+    height: 100%;
+    border-radius: inherit;
+    justify-content: flex-end;
+}
+.modal-performance .progress-bar span {
+    color: #000;
+    padding: .3rem;
+    font-size: .9rem;
+}
+.modal-performance .hp .progress-bar {
+    background-color: red;
+}
+.modal-performance .atk .progress-bar {
+    background-color: darkslateblue;
+}
+.modal-performance .def .progress-bar {
+    background-color: deeppink;
+}
+.modal-performance .spd .progress-bar {
+    background-color: green;
+}
+.modal-performance .exp .progress-bar {
+    background-color: blue;
 }
 
 @media (max-width: 1250px) {

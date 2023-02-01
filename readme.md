@@ -7,24 +7,3 @@
 <li>CSS3</li>
 <li>JavaScript</li>
 </ul>
-
-<h2>Screens</h2>
-<h4>Tela principal</h4>
-Uma lista contendo todos os pokemons, delimitada para os 12 primeiros. No final, há um botão para apresentar mais 12 pokemons.
-</br>
-<div style="margin: 0 auto" align="center">
-<img src="https://github.com/Gabriel-Vict0r/pokedex/blob/master/src/pokedex1.png" alt="tela principal" width="800">
-</div>
-
-<h4>Pop-Up</h4>
-Ao clicar no botão sobre do pokemon, um popup é apresentado contendo mais informações sobre o pokemon.
-</br>
-<div style="margin: 0 auto" align="center">
-<img src="https://github.com/Gabriel-Vict0r/pokedex/blob/master/src/pokedex2.png" alt="tela principal" width="800">
-</div>
-
-<h4>Project Status</h4>
-<img src="https://img.shields.io/badge/STATUS-COMPLETE-green" alt="status do projeto"/>
-
-<h3>URL</H3>
-Caso queira testar a aplicação, segue-se a URL: https://gabriel-vict0r.github.io/pokedex/src/assets/
