@@ -43,7 +43,10 @@ function createPoke(result) {
 
             pokeArea.querySelector('.poke-status a').addEventListener('click', (e)=> {
                 e.preventDefault();
-                console.log(response);
+
+                getEvolves(`https://pokeapi.co/api/v2/pokemon-species/${response.id}/`).then((species)=>{
+                    
+                });
                 let pokemon = e.target.closest('.poke-area ');
 
                 typeDefault = response.types[0].type.name;
@@ -53,7 +56,8 @@ function createPoke(result) {
                 modal.querySelector('.modal-pic').innerHTML = `<img src="${response.sprites.other.dream_world.front_default}">`;
 
                 modal.querySelector('.performance .data.base-xp span:last-child').innerHTML = response.base_experience;
-
+                modal.querySelector('.performance .data.height span:last-child').innerHTML = `${(response.height/10).toFixed(1).replace('.',',')} m`;
+                modal.querySelector('.performance .data.weight span:last-child').innerHTML = `${(response.weight/10).toFixed(1).replace('.',',')} kg`;
                 let skills = [];
                 for(let k in response.abilities) {
                     skills.push(response.abilities[k].ability.name);
@@ -62,7 +66,19 @@ function createPoke(result) {
                 pokemon.querySelectorAll('.types span').forEach((value)=>{
                     let tp = value.cloneNode(true);
                     modal.querySelector('.modal-type').appendChild(tp);
-                })
+                });
+
+                modal.querySelector('.performance .hp .progress-bar').style.width = `${response.stats[0].base_stat}%`;
+                modal.querySelector('.performance .hp .progress-bar span').innerText = `${response.stats[0].base_stat}`;
+
+                modal.querySelector('.performance .atk .progress-bar').style.width = `${response.stats[1].base_stat}%`;
+                modal.querySelector('.performance .atk .progress-bar span').innerText = `${response.stats[1].base_stat}`;
+
+                modal.querySelector('.performance .def .progress-bar').style.width = `${response.stats[2].base_stat}%`;
+                modal.querySelector('.performance .def .progress-bar span').innerText = `${response.stats[2].base_stat}`;
+
+                modal.querySelector('.performance .spd .progress-bar').style.width = `${response.stats[5].base_stat}%`;
+                modal.querySelector('.performance .spd .progress-bar span').innerText = `${response.stats[5].base_stat}`;
                 
 
                 setTimeout(()=>{

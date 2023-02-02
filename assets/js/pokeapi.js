@@ -20,3 +20,11 @@ async function getSpecificPoke(url) {
         return error;
     }
 }
+async function getEvolves(url) {
+    try {
+        let response = await fetch(url);
+        return await response.json();
+    } catch(error) {
+        return error;
+    }
+}
