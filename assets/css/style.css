@@ -219,7 +219,6 @@ a {
 }
 .area-modal .modal-type {
     display: flex;
-    /* justify-content: center; */
     gap: 1rem;
 }
 .area-modal .modal-type span {

@@ -43,7 +43,7 @@ function createPoke(result) {
 
             pokeArea.querySelector('.poke-status a').addEventListener('click', (e)=> {
                 e.preventDefault();
-                // console.log(response);
+                console.log(response);
                 let pokemon = e.target.closest('.poke-area ');
 
                 typeDefault = response.types[0].type.name;
@@ -52,12 +52,18 @@ function createPoke(result) {
                 modal.querySelector('.area-modal').classList.add(typeDefault);
                 modal.querySelector('.modal-pic').innerHTML = `<img src="${response.sprites.other.dream_world.front_default}">`;
 
-                modal.querySelector('.performance .exp .progress-bar span').innerHTML = response.base_experience;
+                modal.querySelector('.performance .data.base-xp span:last-child').innerHTML = response.base_experience;
 
+                let skills = [];
+                for(let k in response.abilities) {
+                    skills.push(response.abilities[k].ability.name);
+                }
+                modal.querySelector('.performance .data.skill span:last-child').innerHTML = skills.join(', ');
                 pokemon.querySelectorAll('.types span').forEach((value)=>{
                     let tp = value.cloneNode(true);
                     modal.querySelector('.modal-type').appendChild(tp);
                 })
+                
 
                 setTimeout(()=>{
                     modal.style.opacity = 1;
